@@ -53,12 +53,29 @@ class Board {
 		this.context.fillStyle = "#000";
 		this.context.lineWidth = 1;
 	}
+	drawRectangles(x, y, w = 150, h = 100, r) {
+		this.context.beginPath();
+		this.context.roundRect(x, y, w, h, r);
+		this.context.fillStyle = "#fff";
+		this.context.fill();
+		this.context.fillStyle = "#000";
+		this.context.stroke();
+	}
+	// drawNode(x, y, u, active) {
+	// 	if (active) this.context.strokeStyle = "#dc3545";
+	// 	this.drawCircle(x, y, this.radius);
+	// 	this.context.font = `${this.fontSize}px Arial`;
+	// 	this.context.textAlign = "center";
+	// 	this.context.fillText(u, x, y + this.fontSize / 2);
+	// 	this.context.strokeStyle = "#000";
+	// }
 	drawNode(x, y, u, active) {
 		if (active) this.context.strokeStyle = "#dc3545";
-		this.drawCircle(x, y, this.radius);
+		this.drawRectangles(x, y, this.radius);
 		this.context.font = `${this.fontSize}px Arial`;
 		this.context.textAlign = "center";
-		this.context.fillText(u, x, y + this.fontSize / 2);
+		this.context.textBaseline = "middle";
+		this.context.fillText(u, x + 150 / 2, y + 100 / 2);
 		this.context.strokeStyle = "#000";
 	}
 	drawMotionLine(x1, y1, x2, y2, color) {
